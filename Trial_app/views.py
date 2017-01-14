@@ -54,19 +54,3 @@ def register(request):
         user_form = RegistrationForm()
 
     return render(request, 'Trial_app/register.html', {'form' : user_form})
-
-# def login(request):
-#     if request.method == 'POST':
-#         login_form_details = LoginForm(request.POST)
-#         if login_form_details.is_valid:
-#             email  = request.POST['email']
-#             password  = request.POST['password']
-#             # login_email = Registration.objects.get(email=email)
-#             # login_password = Registration.objects.get(email=email)
-#             #
-#             # if login_email and login_password:
-#
-#
-# def logout(request):
-#     return HttpResponse('You are logged out')
-
