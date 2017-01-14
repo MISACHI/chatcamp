@@ -1,0 +1,64 @@
+{% extends 'Trial_app/base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}'Users profile'{% endblock %}
+
+{% block nav %}
+
+<div class="row navbar-right col-sm-4">
+    <ul class="navbar-nav nav">
+        <li><a href="{% url 'trial_home' %}">Home</a></li>
+        <li class="active"><a href="{% url 'trial_profile' %}">Profile</a></li>
+        <li><a href="#">Messages</a></li>
+        <li><a href="#">Notifications</a></li>
+        <li><a href="#">Feeds</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+</div>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="margin-bottom-nav">
+    <div class="container">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="">
+                        <div class="padding-body">
+                            <div class="media-body">
+                                <h4 class="media-heading"> Brian Misachi </h4>
+                            </div>
+                            <div class="media">
+                                <a href="#" class="thumbnail pull-left"><img src="{% static 'img/finance101.png' %}" alt="" class="img-responsive"></a>
+                            </div>
+                        </div><hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script >
+    var window_width = $(window).width();
+    if (window_width <= 1543) {
+        $('#navbar-container .navbar-right').removeClass('col-sm-4');
+        $('#navbar-container .navbar-right').addClass('col-sm-8');
+    }
+    if (window_width <= 882){
+        $('#navbar-container .navbar-right').removeClass('col-sm-8');
+        $('#navbar-container .navbar-right').addClass('col-sm-11');
+	}
+</script>
+
+{% endblock %}

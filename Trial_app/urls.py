@@ -1,0 +1,10 @@
+from django.conf.urls import url
+from Trial_app.views import index, home, register, profile, feeds
+
+urlpatterns = [
+    url(r'^$', index, name='trial_index'),
+    url(r'^home/$', home, name='trial_home'),
+    url(r'^feeds/$', feeds, name='trial_feeds'),
+    url(r'^signup/$', register, name='trial_signup'),
+    url(r'^profile/$', profile, name='trial_profile')
+]
