@@ -6,5 +6,5 @@ urlpatterns = [
     url(r'^home/$', home, name='trial_home'),
     url(r'^feeds/$', feeds, name='trial_feeds'),
     url(r'^signup/$', register, name='trial_signup'),
-    url(r'^profile/$', profile, name='trial_profile')
+    url(r'^profile/$', profile, name='trial_profile'),
 ]
