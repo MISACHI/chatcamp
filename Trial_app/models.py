@@ -63,22 +63,22 @@ class Comment(models.Model):
 
 
 class Posts(models.Model):
-    app_user_id = models.ForeignKey(Registration)
-    feeds_id = models.ForeignKey(Feed)
-    comment_id = models.ForeignKey(Comment)
+    app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
+    feeds_id = models.ForeignKey(Feed, on_delete=models.CASCADE)
+    comment_id = models.ForeignKey(Comment, on_delete=models.CASCADE)
     time_posted = models.TimeField()
 
-    def __str__(self):
-         return self.user.username + '\n' + self.comment
+    # def __str__(self):
+    #      return self.user.username + '\n' + self.comment
 
 
 class Creates(models.Model):
-    app_user_id = models.ForeignKey(Registration)
-    profile_id = models.ForeignKey(Profile)
+    app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
+    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
     data_created = models.DateField
 
 
 class ShootsMessage(models.Model):
-    app_user_id = models.ForeignKey(Registration)
-    message_id = models.ForeignKey(Message)
+    app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
+    message_id = models.ForeignKey(Message, on_delete=models.CASCADE)
     time_sent = models.TimeField()
