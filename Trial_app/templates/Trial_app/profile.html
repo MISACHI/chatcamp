@@ -10,9 +10,9 @@
     <ul class="navbar-nav nav">
         <li><a href="{% url 'trial_home' %}">Home</a></li>
         <li class="active"><a href="{% url 'trial_profile' %}">Profile</a></li>
-        <li><a href="#">Messages</a></li>
+        <li><a href="{% url 'trial_message' %}">Messages</a></li>
         <li><a href="#">Notifications</a></li>
-        <li><a href="#">Feeds</a></li>
+        <li><a href="{% url 'trial_feeds' %}">Feeds</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
     </ul>
 </div>

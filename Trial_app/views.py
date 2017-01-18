@@ -24,6 +24,10 @@ def feeds(request):
 def profile(request):
     return render(request, 'Trial_app/profile.html', {})
 
+@login_required(login_url='login')
+def message(request):
+    return render(request, 'Trial_app/message.html', {})
+
 # View for profile version 2 begins here ;)
 # @login_required(login_url='login')
 # def profile2(request):

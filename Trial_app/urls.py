@@ -1,5 +1,5 @@
 from django.conf.urls import url
-from Trial_app.views import index, home, register, profile, feeds
+from Trial_app.views import index, home, register, profile, feeds, message
 
 urlpatterns = [
     url(r'^$', index, name='trial_index'),
@@ -7,4 +7,5 @@ urlpatterns = [
     url(r'^feeds/$', feeds, name='trial_feeds'),
     url(r'^signup/$', register, name='trial_signup'),
     url(r'^profile/$', profile, name='trial_profile'),
+    url(r'^message/$', message, name='trial_message'),
 ]
