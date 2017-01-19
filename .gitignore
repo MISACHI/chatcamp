@@ -58,9 +58,6 @@ media/
 
 .env
 
-<<<<<<< HEAD
-venv_bootcamp/
-=======
-venv_Trial_project/
+virtualenv_Trial_project/
 >>>>>>> models
 staticfiles
