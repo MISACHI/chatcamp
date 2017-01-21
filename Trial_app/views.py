@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
 
-from Trial_app.models import Registration
+from Trial_app.models import Registration, ShootsMessage, Creates, Posts
 from Trial_app.forms import LoginForm, RegistrationForm
 
 
@@ -17,7 +17,8 @@ def home(request):
 
 @login_required(login_url='login')
 def feeds(request):
-    return render(request,'Trial_app/feeds.html', {})
+    if request.method == 'POST':
+        return render(request,'Trial_app/feeds.html', {})
 
 
 @login_required(login_url='login')
