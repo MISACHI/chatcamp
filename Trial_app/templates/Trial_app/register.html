@@ -78,7 +78,7 @@
 		<div class="page-header" id="gallery">
 			<h2> Register.<small>Sign up here.</small></h2>
 		</div>
-		<form class="form-horizontal" method="POST" action="{% url 'trial_signup' %}" role="form" id="registration-form">
+		<form class="form-horizontal" method="POST" role="form" id="registration-form">
 			{% csrf_token %}
 			{{ form.non_field_errors }}
 			<div class="form-group">
@@ -203,7 +203,7 @@
             e.preventDefault();
             $("#registration-form").addClass("hidden");
             $("#confirmation").removeClass("hidden");
-            window.location.href = "{% url 'trial_home' %}"; // simulates clicking of a link
+            // window.location.href = "{% url 'trial_feeds' %}"; // simulates clicking of a link
             // window.location.replace("{% url 'trial_home' %}"); // simulates a normal http redirect
         });
     });
