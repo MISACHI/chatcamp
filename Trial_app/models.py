@@ -21,6 +21,7 @@ class Registration(models.Model):
 class Profile(models.Model):
     profile_id = models.AutoField(primary_key=True)
     # profile_pic = models.ImageField()
+    app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
     contacts = models.TextField(max_length=10)
     date_of_birth = models.DateField()
     skills = models.CharField(max_length=500)
@@ -38,6 +39,8 @@ class Notification(models.Model):
 
 class Friend(models.Model):
     friends_id = models.AutoField(primary_key=True)
+    # user_one = models.ForeignKey(Registration, on_delete=models.CASCADE)
+    user_friend = models.ForeignKey(Registration)
 
 
 class Feed(models.Model):
@@ -63,23 +66,23 @@ class Comment(models.Model):
         return self.comment + '\n' + self.time_posted
 
 
-class Posts(models.Model):
-    app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
-    feeds_id = models.ForeignKey(Feed, on_delete=models.CASCADE)
-    comment_id = models.ForeignKey(Comment, on_delete=models.CASCADE)
-    time_posted = models.TimeField()
-
-    # def __str__(self):
-    #      return self.user.username + '\n' + self.comment
-
-
-class Creates(models.Model):
-    app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
-    profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
-    data_created = models.DateField
-
-
-class ShootsMessage(models.Model):
-    app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
-    message_id = models.ForeignKey(Message, on_delete=models.CASCADE)
-    time_sent = models.TimeField()
+# class Posts(models.Model):
+#     app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
+#     feeds_id = models.ForeignKey(Feed, on_delete=models.CASCADE)
+#     comment_id = models.ForeignKey(Comment, on_delete=models.CASCADE)
+#     time_posted = models.TimeField()
+#
+#     # def __str__(self):
+#     #      return self.user.username + '\n' + self.comment
+#
+#
+# class Creates(models.Model):
+#     app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
+#     profile_id = models.ForeignKey(Profile, on_delete=models.CASCADE)
+#     data_created = models.DateField
+#
+#
+# class ShootsMessage(models.Model):
+#     app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
+#     message_id = models.ForeignKey(Message, on_delete=models.CASCADE)
+#     time_sent = models.TimeField()

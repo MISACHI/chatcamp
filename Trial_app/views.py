@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
-from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 
-from Trial_app.models import Registration, ShootsMessage, Creates, Posts
-from Trial_app.forms import LoginForm, RegistrationForm
+from Trial_app.models import Registration
+from Trial_app.forms import LoginForm, RegistrationForm, ProfileForm
 
 
 def index(request):
@@ -17,23 +16,26 @@ def home(request):
 
 @login_required(login_url='login')
 def feeds(request):
-    if request.method == 'POST':
-        return render(request,'Trial_app/feeds.html', {})
+    # if request.method == 'POST':
+    return render(request,'Trial_app/feeds.html', {})
 
 
 @login_required(login_url='login')
 def profile(request):
-    return render(request, 'Trial_app/profile.html', {})
+    if request.method == 'POST':
+        profile_info = ProfileForm(request.POST)
+        if profile_info.is_valid():
+            profile_info.save(commit=True)
+        else:
+            return render(request, 'Trial_app/profile.html', {'form':profile_info})
+    else:
+        profile_info = ProfileForm()
+    return render(request, 'Trial_app/profile.html', {'form':profile_info})
+
 
 @login_required(login_url='login')
 def message(request):
     return render(request, 'Trial_app/message.html', {})
-
-# View for profile version 2 begins here ;)
-# @login_required(login_url='login')
-# def profile2(request):
-#     return render(request, 'Trial_app/profile2.html', {})
-
 
 # def register(request):
 #     if request.method == "POST":
@@ -50,13 +52,14 @@ def message(request):
 #
 #     return render(request, 'Trial_app/register.html', {'form' : user_details})
 
+
 def register(request):
     if request.method == 'POST':
         user_form = RegistrationForm(request.POST)
         if user_form.is_valid():
             user = user_form.save(commit=False)
             user.set_password(user.password)
-            user.save()
+            user.save(commit=True)
             return HttpResponseRedirect('/trial/')
         else:
             return render(request, 'Trial_app/register.html', {'form' : user_form})

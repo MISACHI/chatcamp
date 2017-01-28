@@ -6,12 +6,12 @@ from Trial_app.models import Profile
 
 class RegistrationForm(forms.ModelForm):
     confirmpassword = forms.CharField(
-    label = 'Password Confirmation',
-    widget=forms.PasswordInput(attrs={
-        'class':'form-control',
-        'placeholder':'Confirm password',
-        'name':'confirmpassword',
-    }),
+        label='Password Confirmation',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Confirm password',
+            'name': 'confirmpassword',
+        }),
     )
 
     def clean(self):
@@ -29,52 +29,52 @@ class RegistrationForm(forms.ModelForm):
         model = User
         fields = ['first_name', 'last_name', 'username', 'email', 'password', 'confirmpassword']
         widgets = {
-            'username':forms.TextInput(attrs={
-                'class':'form-control',
-                'placeholder':'Username',
-                'name' : 'username',
+            'username': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Username',
+                'name': 'username',
             }),
-            'email':forms.EmailInput(attrs={
-                'class':'form-control',
-                'placeholder':'Email address',
-                'name' : 'email',
+            'email': forms.EmailInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Email address',
+                'name': 'email',
             }),
-            'first_name':forms.TextInput(attrs={
-                'class':'form-control',
-                'placeholder':'First name here',
-                'name' : 'first_name',
+            'first_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'First name here',
+                'name': 'first_name',
             }),
-            'last_name':forms.TextInput(attrs={
-                'class':'form-control',
-                'placeholder':'Last name here',
-                'name' : 'last_name',
+            'last_name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Last name here',
+                'name': 'last_name',
             }),
-            'password':forms.PasswordInput(attrs={
-                'class':'form-control',
-                'placeholder':'Password',
-                'name':'password',
+            'password': forms.PasswordInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Password',
+                'name': 'password',
             }),
         }
 
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
-        label = 'Username',
-        widget = forms.TextInput(
-            attrs = {
-                'class' : 'form-control',
-                'placeholder' : 'Username',
-                'name' : 'username',
+        label='Username',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Username',
+                'name': 'username',
             }
         )
     )
     password = forms.CharField(
-        label = 'Password',
-        widget = forms.PasswordInput(
-            attrs = {
-                'class' : 'form-control',
-                'placeholder' : 'Password',
-                'name' : 'password',
+        label='Password',
+        widget=forms.PasswordInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Password',
+                'name': 'password',
             }
         )
     )
@@ -82,113 +82,125 @@ class LoginForm(AuthenticationForm):
 
 class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(
-        label = 'First name',
-        widget = forms.TextInput(
-            attrs = {
-                'class' : 'form-control',
-                'placeholder' : 'First name',
-                'name' : 'first_name',
+        label='First name',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'First name',
+                'name': 'first_name',
             }
         )
     )
     last_name = forms.CharField(
-        label = 'Last name',
-        widget = forms.TextInput(
-            attrs = {
-                'class' : 'form-control',
-                'placeholder' : 'Last name',
-                'name' : 'last_name',
+        label='Last name',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Last name',
+                'name': 'last_name',
             }
         )
     )
     username = forms.CharField(
-        label = 'Username',
-        widget = forms.TextInput(
-            attrs = {
-                'class' : 'form-control',
-                'placeholder' : 'Username',
-                'name' : 'username',
+        label='Username',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Username',
+                'name': 'username',
             }
         )
     )
     email = forms.EmailField(
-        label = 'Email address',
-        widget = forms.EmailInput(
-            attrs = {
-                'class' : 'form-control',
-                'placeholder' : 'Email address',
-                'name' : 'email',
+        label='Email address',
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Email address',
+                'name': 'email',
             }
         )
     )
     day = forms.DateField(
-        label = 'Date of Birth',
-        widget = forms.DateInput(
-            attrs = {
-                'class' : 'form-control',
-                'name' : 'dob',
+        label='Date of Birth',
+        widget=forms.DateInput(
+            attrs={
+                'class': 'form-control',
+                'name': 'dob',
             }
         )
     )
     tel_no = forms.CharField(
-        label = 'Mobile number',
-        widget = forms.TextInput(
-            attrs = {
-                'class' : '',
-                'name' : 'tel_no',
+        label='Mobile number',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder' : 'Mobile Number',
+                'name': 'tel_no',
             }
         )
     )
     prof_pic = forms.FileField(
-        label = 'Profile picture',
-        widget = forms.FileInput(
-            attrs = {
-                'class' : 'hidden',
-                'name' : 'prof_pic',
+        label='Profile picture',
+        widget=forms.FileInput(
+            attrs={
+                'class': 'hidden',
+                'name': 'prof_pic',
             }
         )
     )
     brief_description = forms.CharField(
-        label = 'Bio',
-        widget = forms.Textarea(
-            attrs = {
-                'class' : 'form-control',
-                'placeholder' : 'Tell about yourself',
-                'name' : 'brief_description',
+        label='Bio',
+        widget=forms.Textarea(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Tell about yourself',
+                'name': 'brief_description',
             }
         )
     )
     profession = forms.CharField(
-        label = 'Occupation',
-        widget = forms.TextInput(
-            attrs = {
-                'class' : 'form-control',
-                'placeholder' : 'Where have you worked?',
-                'name' : 'profession',
+        label='Occupation',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Where have you worked?',
+                'name': 'profession',
             }
         )
     )
     skills = forms.CharField(
-        label = 'Skills',
-        widget = forms.Textarea(
-            attrs = {
-                'class' : 'form-control',
-                'placeholder' : 'Flaunt your skills',
-                'name' : 'skills',
+        label='Skills',
+        widget=forms.Textarea(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Flaunt your skills',
+                'name': 'skills',
             }
         )
     )
     location = forms.CharField(
-        label = 'Place or residence',
-        widget = forms.TextInput(
-            attrs = {
-                'class' : 'form-control',
-                'placeholder' : 'Where do you live',
-                'name' : 'location',
+        label='Place or residence',
+        widget=forms.TextInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Where do you live',
+                'name': 'location',
             }
         )
     )
 
     class Meta:
         model = Profile
-        fields = ['day', 'tel_no', 'prof_pic', 'brief_description', 'profession', 'skills']
+        fields = [
+            'first_name',
+            'last_name',
+            'username',
+            'email',
+            'day',
+            'tel_no',
+            'prof_pic',
+            'brief_description',
+            'profession',
+            'skills',
+        ]
