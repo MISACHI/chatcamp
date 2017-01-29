@@ -19,15 +19,11 @@ def register(request):
     if request.method == 'POST':
         user_form = RegistrationForm(request.POST)
         if user_form.is_valid():
-            # first_name = user_form.cleaned_data.get('first_name')
-            # last_name = user_form.cleaned_data.get('last_name')
             username = user_form.cleaned_data.get('username')
             email = user_form.cleaned_data.get('email')
             password = user_form.cleaned_data.get('password')
 
             User.objects.create_user(
-                # first_name=first_name,
-                # last_name=last_name,
                 username=username,
                 email=email,
                 password=password,
@@ -35,17 +31,6 @@ def register(request):
 
             user = authenticate(username=username, password=password)
             login(request, user)
-            # user_data = user_form.save(commit=False)
-            # user_data.set_password(user_data.password)
-            # user_data.save(commit=True)
-            # User.objects.create_user(
-            #     first_name = user_form.clean_data['first_name'],
-            #     last_name = user_form.clean_data['last_name'],
-            #     username = user_form.clean_data['username'],
-            #     email = user_form.clean_data['email'],
-            #     password = user_form.clean_data['password'],
-            #     confirmpassword = user_form.clean_data['confirmpassword']
-            # )
             return HttpResponseRedirect('/trial/signup')
         else:
             return render(request, 'Trial_app/register.html', {'form': user_form})

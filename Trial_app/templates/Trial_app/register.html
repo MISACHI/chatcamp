@@ -19,111 +19,29 @@
 
 {% block body %}
 
-<!--<div class="container">-->
-    <!--<div class="maximum-width col-md-offset-2 margin-top-120 col-md-8">-->
-        <!--<div class="page-header">-->
-            <!--<span class="h2">Sign up Here</span>-->
-        <!--</div>-->
-        <!--<form class="form-horizontal" method="POST" action="{% url 'trial_home' %}" role="form">-->
-            <!--{% csrf_token %}-->
-            <!--{{ form.non_field_errors }}-->
-            <!--<div class="form-group">-->
-                <!--{{ form.first_name.errors }}-->
-                <!--<label for={{ form.first_name.id_for_label }} class="control-label col-md-2">{{ form.first_name.label }}</label>-->
-                <!--<div class="col-md-5">-->
-                    <!--{{ form.first_name }}-->
-                <!--</div>-->
-                <!--<div class="col-md-5" id="padding-top">-->
-                    <!--{{ form.last_name }}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--{{ form.username.errors }}-->
-                <!--<label for={{ form.username.id_for_label }} class="control-label col-md-2">{{ form.username.label }}</label>-->
-                <!--<div class="col-md-10">-->
-                    <!--{{ form.username }}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--{{ form.email.errors }}-->
-                <!--<label for={{ form.email.id_for_label }} class="control-label col-md-2">{{ form.email.label }}</label>-->
-                <!--<div class="col-md-10">-->
-                    <!--{{ form.email }}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--{{ form.password.errors }}-->
-                <!--<label for={{ form.password.id_for_label }} class="col-md-2 control-label">{{ form.password.label }}</label>-->
-                <!--<div class="col-md-10">-->
-                    <!--{{ form.password }}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="form-group">-->
-                <!--{{ form.password2.errors }}-->
-                <!--<label for={{ form.password2.id_for_label }} class="col-md-2 control-label">{{ form.password2.label }}</label>-->
-                <!--<div class="col-md-10">-->
-                    <!--{{ form.password2 }}-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-offset-2">-->
-                <!--<button type="submit" class="btn btn-primary btn-block">Sign up</button>-->
-            <!--</div>-->
-        <!--</form>-->
-     <!--</div>-->
-<!--</div>-->
-
 <div class="background-image">
 <div class="container auto_animate">
 	<div class="maximum-width col-md-offset-3 margin-top-120 col-md-6">
 		<div class="page-header" id="gallery">
 			<h2> Register.<small>Sign up here.</small></h2>
 		</div>
-		<form class="form-horizontal" method="POST" action="{% url 'trial_feeds' %}" role="form" id="registration-form">
+		<form class="form-horizontal" method="POST" action="{% url 'trial_signup' %}" role="form" id="registration-form">
 			{% csrf_token %}
 			{{ form.non_field_errors }}
             {% for field in form.visible_fields %}
-			<div class="form-group {% if field.errors %} has-error {% endif %}">
-				<label for={{ field.label }} class="control-label col-md-2">{{ field.label }} </label>
-				<div class="col-md-10">
-					{{ field }}
-				</div>
-				<!--<div class="col-md-5" id="padding-top">-->
-					<!--{{ form.last_name }}-->
-				<!--</div>-->
-				<!--{{ form.last_name.errors }}-->
-                {% for error in field.errors %}
-                <label class="control-label">{{ error }}</label>
-                {% endfor %}
-			</div>
+                <div class="form-group {% if field.errors %} has-error {% endif %}">
+                    <label for={{ field.id_for_label }} class="control-label col-md-2">{{ field.label }}</label>
+                    <div class="col-md-10">
+                        {{ field }}
+                    </div>
+                    <!--{% if field.help_text %}-->
+                        <!--<span class="help-block">{{ field.help_text|safe }}</span>-->
+                    <!--{% endif %}-->
+                    {% for error in field.errors %}
+                        <label class="control-label">{{ error }}</label>
+                    {% endfor %}
+                </div>
             {% endfor %}
-			<!--<div class="form-group">-->
-				<!--<label for={{ form.username.id_for_label }} class="control-label col-md-2">{{ form.username.label }}</label>-->
-				<!--<div class="col-md-10">-->
-					<!--{{ form.username }}-->
-				<!--</div>-->
-				<!--{{ form.username.errors }}-->
-			<!--</div>-->
-			<!--<div class="form-group">-->
-				<!--<label for={{ form.email.id_for_label }} class="control-label col-md-2">{{ form.email.label }}</label>-->
-				<!--<div class="col-md-10">-->
-					<!--{{ form.email }}-->
-				<!--</div>-->
-                <!--{{ form.email.errors }}-->
-			<!--</div>-->
-			<!--<div class="form-group">-->
-				<!--<label for={{ form.password.id_for_label }} class="control-label col-md-2">{{ form.password.label }}</label>-->
-				<!--<div class="col-md-10">-->
-					<!--{{ form.password }}-->
-				<!--</div>-->
-                <!--{{ form.password.errors }}-->
-			<!--</div>-->
-			<!--<div class="form-group">-->
-				<!--<label for={{ form.confirmpassword.id_for_label }} class="control-label col-md-2">{{ form.confirmpassword.label }}</label>-->
-				<!--<div class="col-md-10">-->
-					<!--{{ form.confirmpassword }}-->
-				<!--</div>-->
-                <!--{{ form.password2.errors }}-->
-			<!--</div>-->
 			<div class="col-md-offset-2">
 				<button type="submit" class="btn btn-primary btn-block">Sign up</button>
 			</div>
