@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponseRedirect
-from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
@@ -28,9 +27,6 @@ def register(request):
                 email=email,
                 password=password,
             )
-
-            user = authenticate(username=username, password=password)
-            login(request, user)
             return HttpResponseRedirect('/trial/signup')
         else:
             return render(request, 'Trial_app/register.html', {'form': user_form})
