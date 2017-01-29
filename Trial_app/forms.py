@@ -5,13 +5,44 @@ from Trial_app.models import Profile
 
 
 class RegistrationForm(forms.ModelForm):
+    username = forms.CharField(
+        label='Username',
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Username',
+            'name':'username',
+        }),
+        max_length=30,
+        required=True,
+        help_text='Usernames may contain <strong>alphanumeric</strong>, <strong>_</strong> and <strong>.</strong> characters'
+    )
+    email = forms.EmailField(
+        label='Email',
+        widget=forms.EmailInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Email address',
+            'name': 'email',
+        }),
+        required=True,
+        max_length=75
+
+    )
+    password = forms.CharField(
+        label='Password',
+        widget=forms.PasswordInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Password',
+            'name': 'password',
+        })
+    )
     confirmpassword = forms.CharField(
-        label='Password Confirmation',
+        label='Confirm Password',
         widget=forms.PasswordInput(attrs={
             'class': 'form-control',
             'placeholder': 'Confirm password',
             'name': 'confirmpassword',
         }),
+        required=True
     )
 
     def clean(self):
@@ -27,34 +58,34 @@ class RegistrationForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password', 'confirmpassword']
-        widgets = {
-            'username': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Username',
-                'name': 'username',
-            }),
-            'email': forms.EmailInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Email address',
-                'name': 'email',
-            }),
-            'first_name': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'First name here',
-                'name': 'first_name',
-            }),
-            'last_name': forms.TextInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Last name here',
-                'name': 'last_name',
-            }),
-            'password': forms.PasswordInput(attrs={
-                'class': 'form-control',
-                'placeholder': 'Password',
-                'name': 'password',
-            }),
-        }
+        fields = ['username', 'email', 'password', 'confirmpassword']
+        # widgets = {
+        #     'username': forms.TextInput(attrs={
+        #         'class': 'form-control',
+        #         'placeholder': 'Username',
+        #         'name': 'username',
+        #     }),
+        #     'email': forms.EmailInput(attrs={
+        #         'class': 'form-control',
+        #         'placeholder': 'Email address',
+        #         'name': 'email',
+        #     }),
+            # 'first_name': forms.TextInput(attrs={
+            #     'class': 'form-control',
+            #     'placeholder': 'First name here',
+            #     'name': 'first_name',
+            # }),
+            # 'last_name': forms.TextInput(attrs={
+            #     'class': 'form-control',
+            #     'placeholder': 'Last name here',
+            #     'name': 'last_name',
+            # }),
+        #     'password': forms.PasswordInput(attrs={
+        #         'class': 'form-control',
+        #         'placeholder': 'Password',
+        #         'name': 'password',
+        #     }),
+        # }
 
 
 class LoginForm(AuthenticationForm):
