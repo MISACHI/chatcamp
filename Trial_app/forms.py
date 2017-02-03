@@ -70,16 +70,16 @@ class RegistrationForm(forms.ModelForm):
         #         'placeholder': 'Email address',
         #         'name': 'email',
         #     }),
-            # 'first_name': forms.TextInput(attrs={
-            #     'class': 'form-control',
-            #     'placeholder': 'First name here',
-            #     'name': 'first_name',
-            # }),
-            # 'last_name': forms.TextInput(attrs={
-            #     'class': 'form-control',
-            #     'placeholder': 'Last name here',
-            #     'name': 'last_name',
-            # }),
+        #     'first_name': forms.TextInput(attrs={
+        #         'class': 'form-control',
+        #         'placeholder': 'First name here',
+        #         'name': 'first_name',
+        #     }),
+        #     'last_name': forms.TextInput(attrs={
+        #         'class': 'form-control',
+        #         'placeholder': 'Last name here',
+        #         'name': 'last_name',
+        #     }),
         #     'password': forms.PasswordInput(attrs={
         #         'class': 'form-control',
         #         'placeholder': 'Password',

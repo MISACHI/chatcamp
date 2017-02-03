@@ -18,16 +18,21 @@ def register(request):
     if request.method == 'POST':
         user_form = RegistrationForm(request.POST)
         if user_form.is_valid():
-            username = user_form.cleaned_data.get('username')
-            email = user_form.cleaned_data.get('email')
-            password = user_form.cleaned_data.get('password')
-
-            User.objects.create_user(
-                username=username,
-                email=email,
-                password=password,
-            )
-            return HttpResponseRedirect('/trial/signup')
+            # username = user_form.cleaned_data.get('username')
+            # email = user_form.cleaned_data.get('email')
+            # password = user_form.cleaned_data.get('password')
+            #
+            # User.objects.create_user(
+            #     username=username,
+            #     email=email,
+            #     password=password,
+            # )
+            form = user_form.save(commit=False)
+            print(user_form.cleaned_data.get("app_user_id"))
+            form.set_password(form.password)
+            # print('fuck ypu')
+            form.save()
+            return HttpResponseRedirect('/trial/')
         else:
             return render(request, 'Trial_app/register.html', {'form': user_form})
     else:
