@@ -56,6 +56,9 @@ docs/_build/
 *.sqlite3
 media/
 
+#pycharm files
+.idea/
+
 .env
 
 virtualenv_Trial_project/
