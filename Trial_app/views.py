@@ -1,9 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 
-from Trial_app.forms import RegistrationForm, ProfileForm
+from Trial_app.forms import ProfileForm
 
 
 def index(request):
@@ -12,33 +10,6 @@ def index(request):
 
 def home(request):
     return render(request, 'Trial_app/home.html', {})
-
-
-def register(request):
-    if request.method == 'POST':
-        user_form = RegistrationForm(request.POST)
-        if user_form.is_valid():
-            # username = user_form.cleaned_data.get('username')
-            # email = user_form.cleaned_data.get('email')
-            # password = user_form.cleaned_data.get('password')
-            #
-            # User.objects.create_user(
-            #     username=username,
-            #     email=email,
-            #     password=password,
-            # )
-            form = user_form.save(commit=False)
-            print(user_form.cleaned_data.get("app_user_id"))
-            form.set_password(form.password)
-            # print('fuck ypu')
-            form.save()
-            return HttpResponseRedirect('/trial/')
-        else:
-            return render(request, 'Trial_app/register.html', {'form': user_form})
-    else:
-        user_form = RegistrationForm()
-
-    return render(request, 'Trial_app/register.html', {'form': user_form})
 
 
 @login_required(login_url='login')

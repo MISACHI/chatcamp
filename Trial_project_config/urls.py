@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import TemplateView
 
+from authentication import views as trial_auth_views
 from Trial_app.forms import LoginForm
 
 urlpatterns = [
@@ -30,5 +31,6 @@ urlpatterns = [
     }, name='login'),
 
     url(r'^logout/$', auth_views.logout, {'next_page' : 'login'}, name='logout'),
+    url(r'^register/$', trial_auth_views.register, name='trial_register'),
     url(r'^admin/', admin.site.urls),
 ]

@@ -31,8 +31,10 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'Trial_app',
-    'django.contrib.admin',
+    'Trial_project.Trial_app',
+    'Trial_project.authentication',
+
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -50,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Trial_project.urls'
+ROOT_URLCONF = 'Trial_project_config.urls'
 
 TEMPLATES = [
     {
@@ -68,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Trial_project.wsgi.application'
+WSGI_APPLICATION = 'Trial_project_config.wsgi.application'
 
 
 # Database
