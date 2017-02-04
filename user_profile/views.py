@@ -13,4 +13,4 @@ def profile(request):
             return render(request, 'Trial_app/profile.html', {'form': profile_info})
     else:
         profile_info = ProfileForm()
-    return render(request, 'Trial_app/profile.html', {'form': profile_info})
+    return render(request, 'user_profile/profile.html', {'form': profile_info})

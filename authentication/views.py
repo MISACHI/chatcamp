@@ -22,5 +22,5 @@ def register(request):
     else:
         user_form = RegistrationForm()
 
-    return render(request, 'Trial_app/register.html', {'form': user_form})
+    return render(request, 'authentication/register.html', {'form': user_form})
 

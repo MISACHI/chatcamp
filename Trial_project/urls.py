@@ -28,7 +28,7 @@ from Trial_app.forms import LoginForm
 
 urlpatterns = [
     url(r'^trial/', include('Trial_app.urls')),
-    url(r'^$', TemplateView.as_view(template_name='Trial_app/feeds.html'), name='feeds'),
+    url(r'^$', TemplateView.as_view(template_name='feeds/feeds.html'), name='feeds'),
 
     url(r'^login/$', auth_views.login, {
         'template_name': 'Trial_app/login.html',
