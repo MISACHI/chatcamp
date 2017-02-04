@@ -122,7 +122,7 @@
         });
 
         validator.on("success.form.bv", function(e){
-            e.preventDefault();
+            <!--e.preventDefault();-->
             $("#registration-form").addClass("hidden");
             $("#confirmation").removeClass("hidden");
             // window.location.href = "{% url 'trial_home' %}"; // simulates clicking of a link

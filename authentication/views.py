@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 from authentication.forms import RegistrationForm
 
@@ -16,7 +17,7 @@ def register(request):
                 email=email,
                 password=password,
             )
-            return redirect('/trial/')
+            return HttpResponseRedirect('/feeds/')
         else:
             return render(request, 'Trial_app/register.html', {'form': user_form})
     else:
