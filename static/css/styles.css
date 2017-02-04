@@ -1,21 +1,48 @@
-body{
-    background-color: black;
+.navbar-brand {
+    -webkit-perspective: 500px;
+    -moz-perspective: 500px;
+    -o-perspective: 500px;
+    perspective: 500px;
+
 }
-/*.navbar-inverse{
-	background-color: rgba(75, 75, 93, 0.85);
-	color: #ffffff;
-	border-bottom: solid;
-	border-color: rgba(75, 75, 93, 0.85);
+.brand {
+    /* transition for spinning the logo*/
+    -webkit-transition: all 3s cubic-bezier(0.950, 0.050, 0.795, 0.035);
+    -moz-transition: all 3s cubic-bezier(0.950, 0.050, 0.795, 0.035);
+    -o-transition: all 3s cubic-bezier(0.950, 0.050, 0.795, 0.035);
+    transition: all 3s cubic-bezier(0.950, 0.050, 0.795, 0.035);
+    -webkit-transition-delay: 1s;
+    -moz-transition-delay: 1s;
+    -o-transition-delay; 1s;
+    transition-delay: 1s;
+
 }
-.navbar-nav li{
-	color: #fff;
-}*/
+.navbar-brand img{
+    /* transition for growing logo */
+    -webkit-transition: all .5s ease;
+    -moz-transition: all .5s ease;
+    -o-transition: all .5s ease;
+    transition: all .5s ease;
+}
+.navbar-brand img:hover { /* spins logo onHover */
+    -webkit-transform: scale(2);
+    -moz-transform: scale(2);
+    -ms-transform: scale(2);
+    -o-transform: scale(2);
+    transform: scale(2.0);
+}
+.animated {
+    -webkit-transform: rotateY(-720deg);
+    -moz-transform: rotateY(-720deg);
+    -o-transform: rotateY(-720deg);
+    transform: rotateY(-720deg);
+}
 .image-sizer img {
     border: 1px solid #f5f5f5;
     border-radius: 150px;
-    height: 70px;
+    height: 60px;
     padding: 3px;
-    width: 70px;
+    width: 60px;
     display:inline-block;
     vertical-align: top;
 }
@@ -149,10 +176,6 @@ body{
 .brand{
 	max-height: 30px;
 	
-}
-.feed-img {
-    max-height: 70;
-    max-width: 70;
 }
 @media (max-width: 770px){
 	.input-group{

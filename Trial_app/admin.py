@@ -1,6 +1,5 @@
 from django.contrib import admin
 from Trial_app.models import(
-        Registration,
         Profile,
         Message,
         Notification,
@@ -9,7 +8,6 @@ from Trial_app.models import(
         Comment,
     )
 
-admin.site.register(Registration)
 admin.site.register(Profile)
 admin.site.register(Message)
 admin.site.register(Notification)

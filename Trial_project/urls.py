@@ -17,7 +17,13 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.views.generic.base import TemplateView
+from django.conf import settings
+from django.conf.urls.static import static
 
+from authentication import views as trial_auth_views
+from user_profile import views as trial_profile_views
+from feeds import views as trial_feeds
+from user_messages import views as trial_messages
 from Trial_app.forms import LoginForm
 
 urlpatterns = [
@@ -25,10 +31,18 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name='Trial_app/feeds.html'), name='feeds'),
 
     url(r'^login/$', auth_views.login, {
-        'template_name' : 'Trial_app/login.html',
-        'authentication_form' : LoginForm,
+        'template_name': 'Trial_app/login.html',
+        'authentication_form': LoginForm,
     }, name='login'),
 
-    url(r'^logout/$', auth_views.logout, {'next_page' : 'login'}, name='logout'),
+    url(r'^logout/$', auth_views.logout,
+        {'next_page': 'login'},
+        name='logout'),
+
+    url(r'^register/', trial_auth_views.register, name='trial_signup'),
+    url(r'^profile/', trial_profile_views.profile, name='trial_profile'),
+    url(r'^feeds/', trial_feeds.feeds, name='trial_feeds'),
+    url(r'^messages/', trial_messages.user_messages, name='trial_messages'),
     url(r'^admin/', admin.site.urls),
 ]
+              # + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
