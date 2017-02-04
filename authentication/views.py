@@ -17,9 +17,9 @@ def register(request):
                 email=email,
                 password=password,
             )
-            return HttpResponseRedirect('/feeds/')
+            return redirect('/feeds/')
         else:
-            return render(request, 'Trial_app/register.html', {'form': user_form})
+            return render(request, 'authentication/register.html', {'form': user_form})
     else:
         user_form = RegistrationForm()
 

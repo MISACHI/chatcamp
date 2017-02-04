@@ -5,7 +5,7 @@ from authentication.models import Registration
 class Profile(models.Model):
     profile_id = models.AutoField(primary_key=True)
     profile_pic = models.ImageField(null=True)
-    app_user_id = models.ForeignKey(Registration, on_delete=models.CASCADE)
+    app_user_id = models.OneToOneField(Registration, on_delete=models.CASCADE)
     contacts = models.TextField(max_length=10)
     date_of_birth = models.DateField()
     skills = models.CharField(max_length=500)

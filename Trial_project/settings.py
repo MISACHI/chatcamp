@@ -134,5 +134,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "Trial_project/static")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
-
+FIXTURE_DIRS = [
+    os.path.join(BASE_DIR, "Trial_app/fixture"),
+    os.path.join(BASE_DIR, "authentication/fixture"),
+    os.path.join(BASE_DIR, "user_messages/fixture"),
+    os.path.join(BASE_DIR, "user_profile/fixture"),
+    os.path.join(BASE_DIR, "feeds/fixture")
+]
 LOGIN_REDIRECT_URL = 'feeds'
