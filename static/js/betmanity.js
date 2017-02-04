@@ -5,6 +5,8 @@ jQuery(document).ready(function(){
 
 		$(".nav-tabs a:first").tab("show");
 
+		$(".brand").addClass("animated");
+
 		var window_width = $(window).width();
 
 		if (window_width <= 1500) {
