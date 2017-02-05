@@ -362,3 +362,14 @@
             .testimonial.testimonial-danger-filled .testimonial-writer-name{
                 color: #D9534F;
             }
+
+.responsive-msg-left{
+    font-size: 0.8em;
+    margin-left: 100px;
+    width: 100%px;
+}
+.responsive-msg-right{
+    font-size: 0.8em;
+    width:100%px;
+    margin-right: 50px;
+}

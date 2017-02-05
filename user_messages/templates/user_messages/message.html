@@ -23,7 +23,7 @@
 
 <div class="container margin-bottom-nav">
 	<div class="row">
-		<div class="col-sm-offset-2 col-sm-4 col-md-4 col-md-offset-2">
+		<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 msg-responsive-right">
             <div id="tb-testimonial" class="testimonial testimonial-default">
                 <div class="testimonial-section">
                     Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.
@@ -39,9 +39,8 @@
             </div>
 		</div>
 	</div>
-    <br>
     <div class="row">
-		<div class="col-sm-offset-6 col-sm-4 col-md-4 col-md-offset-6">
+		<div class="col-md-4 col-md-offset-6 col-sm-4 col-sm-offset-6 msg-responsive msg-responsive-left">
             <div id="tb-testimonial" class="testimonial testimonial-info">
                 <div class="testimonial-section">
                     Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.
@@ -57,9 +56,8 @@
             </div>
 		</div>
 	</div>
-    <br>
     <div class="row">
-		<div class="col-sm-offset-2 col-sm-4 col-md-4 col-md-offset-2">
+		<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 msg-responsive msg-responsive-right">
             <div id="tb-testimonial" class="testimonial testimonial-default">
                 <div class="testimonial-section">
                     Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.
@@ -76,7 +74,7 @@
 		</div>
 	</div>
     <div class="row">
-		<div class="col-sm-offset-6 col-sm-4 col-md-4 col-md-offset-6">
+		<div class="col-md-4 col-md-offset-6 col-sm-4 col-sm-offset-6 msg-responsive msg-responsive-left">
             <div id="tb-testimonial" class="testimonial testimonial-info">
                 <div class="testimonial-section">
                     Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.
@@ -92,9 +90,8 @@
             </div>
 		</div>
 	</div>
-    <br>
     <div class="row">
-		<div class="col-md-4 col-md-offset-2 col-sm-offset-2 col-sm-4">
+		<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 msg-responsive msg-responsive-right">
             <div id="tb-testimonial" class="testimonial testimonial-default">
                 <div class="testimonial-section">
                     Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.
@@ -110,6 +107,8 @@
             </div>
 		</div>
 	</div>
+</div>
+
     <br/>
 
 {% endblock %}
@@ -117,8 +116,8 @@
 {% block javascript %}
 
 <script >
-
-    var window_width = $(window).width();
+$(document).ready(function(){
+   var window_width = $(window).width();
     if (window_width <= 1543) {
         $('#navbar-container .navbar-right').removeClass('col-sm-4');
         $('#navbar-container .navbar-right').addClass('col-sm-8');
@@ -127,6 +126,17 @@
         $('#navbar-container .navbar-right').removeClass('col-sm-8');
         $('#navbar-container .navbar-right').addClass('col-sm-11');
 	}
+	if (window_width <= 768){
+        $('#msg-responsive-left').removeClass('testimonial-section');
+        $('#msg-responsive-right').removeClass('testimonial-section');
+
+        $('.msg-responsive-left').addClass('responsive-msg-left');
+        $('.msg-responsive-right').addClass('responsive-msg-right');
+	}
+
+
+
+});
 
 </script>
 
