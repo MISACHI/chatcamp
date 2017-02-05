@@ -22,7 +22,7 @@
 <div class="margin-bottom-nav">
     <div class="container" id="maintain-row">
         <!--<div class="col-sm-6">-->
-
+            <!---->
         <!--</div>-->
         <div id="panel-wide">
             <div class="make-panel-wide col-sm-6 col-sm-offset-3">
@@ -39,6 +39,16 @@
                             <div class="col-sm-8">
                                 <div class="media-body">
                                     <h4>Jay M. Bootstrap - <em>September 1, 2014</em></h4>
+                                    <form action="{% url 'trial_feeds' %}" method="POST" role="form" id="feeds-form" class="form-horizontal">
+                                        {% csrf_token %}
+			                            {{ forms.non_field_errors }}
+                                        <div class="col-md-4">
+                                            {{ forms.posts }}
+                                        </div>
+                                        <div class="pull right">
+                                            <button type="submit" class="btn btn-primary btn-block">Post</button>
+                                        </div>
+                                    </form>
                                     <p>
                                         I love your finance blog!  It has everything I ever wanted to know about finance and then some.  Please keep
                                         distributing this valuable information to the general public. These comment fields can go on and on or you
