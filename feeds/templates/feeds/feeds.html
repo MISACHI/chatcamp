@@ -39,6 +39,18 @@
                             <div class="col-sm-8">
                                 <div class="media-body">
                                     <h4>Jay M. Bootstrap - <em>September 1, 2014</em></h4>
+                                    <form action="{% url 'trial_feeds' %}" class="form-horizontal" method="POST" role="form" id="feeds-form">
+                                        {% csrf_token %}
+                                        <!--{% form.non_field_errors %}-->
+
+                                        <div class="form-group">
+                                            <!--<label for="feed-id" class="control-label col-md-6"></label>-->
+                                            <!--{{ form.feeds_data }}-->
+                                            <div class="col-md-6">
+                                                <textarea name="feeds" class="form-control" placeholder="Comment"></textarea>
+                                            </div>
+                                        </div>
+                                    </form>
                                     <p>
                                         I love your finance blog!  It has everything I ever wanted to know about finance and then some.  Please keep
                                         distributing this valuable information to the general public. These comment fields can go on and on or you
