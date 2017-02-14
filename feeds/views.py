@@ -36,7 +36,7 @@ def post_feeds(request):
         feeds_form = FeedsForm(request.POST)
         if feeds_form.is_valid():
             user_posts = feeds_form.cleaned_data.get('posts')
-            Feed.objects.create(posts=user_posts)
+            Feed.objects.create(posts=user_posts, user=user)
             return redirect('/feeds/')
         else:
             return render(request, 'feeds/post_feeds.html', {'forms': feeds_form})
