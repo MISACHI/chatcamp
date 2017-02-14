@@ -4,6 +4,15 @@
 
 {% block title %}Sign up{% endblock %}
 
+{% block nav_brand %}
+
+<a href="{% url 'trial_feeds' %}" class="navbar-brand">
+    <img class="brand" src="{% static 'img/finance101.png' %}">
+</a>
+
+{% endblock %}
+
+
  {% block nav %}
 	<div class="row navbar-right col-sm-4">
 		<ul class="navbar-nav nav">
