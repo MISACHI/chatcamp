@@ -2,12 +2,19 @@
 
 {% load staticfiles %}
 
-{% block title %}'User name'{% endblock %}
+{% block title %}{{ user.username }}{% endblock %}
+{% block nav_brand %}
+
+<a href="{% url 'trial_feeds' %}" class="navbar-brand">
+    <img class="brand" src="{% static 'img/finance101.png' %}">
+</a>
+
+{% endblock %}
 
 {% block nav %}
 <div class="row navbar-right col-sm-4">
     <ul class="navbar-nav nav">
-        <li><a href="{% url 'trial_home' %}">Home</a></li>
+        <li><a href="{% url 'trial_feeds' %}">Home</a></li>
         <li><a href="{% url 'trial_profile' %}">Profile</a></li>
         <li><a href="{% url 'trial_messages' %}">Messages</a></li>
         <li><a href="#">Notifications</a></li>
@@ -22,7 +29,7 @@
 <div class="margin-bottom-nav">
     <div class="container" id="maintain-row">
         <!--<div class="col-sm-6">-->
-
+            <!---->
         <!--</div>-->
         <div id="panel-wide">
             <div class="make-panel-wide col-sm-6 col-sm-offset-3">

@@ -8,7 +8,7 @@ class RegistrationForm(forms.ModelForm):
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'placeholder': 'Username',
-            'name':'username',
+            'name': 'username',
         }),
         max_length=30,
         required=True,

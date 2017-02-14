@@ -22,7 +22,6 @@ from django.conf.urls.static import static
 
 from authentication import views as trial_auth_views
 from user_profile import views as trial_profile_views
-from feeds import views as trial_feeds
 from user_messages import views as trial_messages
 from Trial_app.forms import LoginForm
 
@@ -41,7 +40,7 @@ urlpatterns = [
 
     url(r'^register/', trial_auth_views.register, name='trial_signup'),
     url(r'^profile/', trial_profile_views.profile, name='trial_profile'),
-    url(r'^feeds/', trial_feeds.feeds, name='trial_feeds'),
+    url(r'^feeds/', include('feeds.urls')),
     url(r'^messages/', trial_messages.user_messages, name='trial_messages'),
     url(r'^admin/', admin.site.urls),
 ]

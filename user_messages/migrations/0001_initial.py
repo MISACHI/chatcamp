@@ -17,10 +17,12 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Registration',
+            name='UserMessages',
             fields=[
-                ('app_user_id', models.AutoField(primary_key=True, serialize=False)),
-                ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('user_messages_id', models.AutoField(primary_key=True, serialize=False)),
+                ('user_messages', models.CharField(max_length=500)),
+                ('user_messages_time', models.TimeField()),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

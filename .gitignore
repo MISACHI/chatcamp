@@ -2,6 +2,12 @@
 __pycache__/
 *.py[cod]
 
+# project files and directories
+/Trial_project/local_settings.py
+/Trial_project/static/
+/Trial_project/tmp/
+/Trial_project/media/
+
 # C extensions
 *.so
 
@@ -36,6 +42,7 @@ coverage.xml
 
 # Translations
 *.mo
+*.pot
 
 # Mr Developer
 .mr.developer.cfg

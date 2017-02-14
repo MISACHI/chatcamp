@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponseRedirect
+from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from authentication.forms import RegistrationForm
+from feeds.models import Feed
 
 
 def register(request):
@@ -17,6 +19,11 @@ def register(request):
                 email=email,
                 password=password,
             )
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            _success_msg = '{0} was successfully added'.format(user.username)
+            feed = Feed(user=user, posts=_success_msg)
+            feed.save()
             return redirect('/feeds/')
         else:
             return render(request, 'authentication/register.html', {'form': user_form})
