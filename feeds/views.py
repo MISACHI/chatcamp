@@ -10,6 +10,7 @@ from feeds.models import Feed
 @login_required(login_url='login')
 def feeds(request):
     user = request.user
+    feed_data = Feed.get_user_feeds()
     # feed_data = Feed()
     # feed_data.user = user
     # posts = request.POST['posts']
@@ -25,7 +26,8 @@ def feeds(request):
     # # else:
     # #     return FeedsForm()
     return render(request, 'feeds/feeds.html', {
-        'user' : user
+        'user' : user,
+        'feeds' : feed_data,
     })
 
 
