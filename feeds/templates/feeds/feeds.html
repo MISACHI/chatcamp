@@ -26,6 +26,7 @@
 
 {% block body %}
 
+{% if user.is_authenticated %}
 <div class="margin-bottom-nav">
     <div class="container" id="maintain-row">
         <!--<div class="col-sm-6">-->
@@ -270,6 +271,8 @@
         </div>
     </div>
 </div>
+{% endif %}
+
 {% endblock %}
 
 {% block javascript %}
