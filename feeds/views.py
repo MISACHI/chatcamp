@@ -11,20 +11,6 @@ from feeds.models import Feed
 def feeds(request):
     user = request.user
     feed_data = Feed.get_user_feeds()
-    # feed_data = Feed()
-    # feed_data.user = user
-    # posts = request.POST['posts']
-    # feed_data.posts = posts
-    # feed_data.save()
-    # # if request.method == 'POST':
-    # #     feeds_form = FeedsForm(request.POST)
-    # #     if feeds_form.is_valid():
-    # #         user_posts = feeds_form.cleaned_data['posts']
-    # #         Feed.objects.create(posts=user_posts)
-    # #     else:
-    # #         return render(request, 'feeds/feeds.html', {'forms': feeds_form})
-    # # else:
-    # #     return FeedsForm()
     return render(request, 'feeds/feeds.html', {
         'user' : user,
         'feeds' : feed_data,

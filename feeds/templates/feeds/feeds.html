@@ -46,7 +46,7 @@
                             </div>
                             <div class="col-sm-8">
                                 <div class="media-body">
-                                    <h4>{{ feed.user }} - <em>{{ feed.timestamp }}</em></h4>
+                                    <h4>{{ feed.user }} - <em>{{ feed.timestamp|timesince }}</em></h4>
                                     <p>
                                         {{ feed.posts }}
                                     </p>

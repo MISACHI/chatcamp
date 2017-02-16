@@ -25,3 +25,6 @@ class Feed(models.Model):
         else:
             feeds = Feed.objects.filter(timestamp__lte=date.today())
         return feeds
+
+    class Meta:
+        ordering = ["-timestamp", "-time_updated"]

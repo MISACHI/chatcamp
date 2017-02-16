@@ -4,10 +4,21 @@ from django.contrib.auth.models import User
 from django.utils.encoding import python_2_unicode_compatible
 
 
+def upload_location(obj, filename):
+    return u"{0:s}/{1:s}".format(obj.id, filename)
+
+
 @python_2_unicode_compatible
 class Profile(models.Model):
     profile_id = models.AutoField(primary_key=True)
-    profile_pic = models.ImageField(null=True)
+    profile_pic = models.ImageField(
+        upload_to=upload_location,
+        null=True, blank=True,
+        height_field="height_field",
+        width_field="width_field"
+    )
+    height_field = models.IntegerField(default=0)
+    width_field = models.IntegerField(default=0)
     app_user_id = models.OneToOneField(User)
     contacts = models.TextField(max_length=10)
     date_of_birth = models.DateField()
