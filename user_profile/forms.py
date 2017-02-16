@@ -43,7 +43,7 @@ class ProfileForm(forms.ModelForm):
             }
         )
     )
-    day = forms.DateField(
+    birth_date = forms.DateField(
         label='Date of Birth',
         widget=forms.DateInput(
             attrs={
@@ -101,16 +101,6 @@ class ProfileForm(forms.ModelForm):
             }
         )
     )
-    location = forms.CharField(
-        label='Place or residence',
-        widget=forms.TextInput(
-            attrs={
-                'class': 'form-control',
-                'placeholder': 'Where do you live',
-                'name': 'location',
-            }
-        )
-    )
 
     class Meta:
         model = Profile
@@ -119,7 +109,7 @@ class ProfileForm(forms.ModelForm):
             'last_name',
             'username',
             'email',
-            'day',
+            'birth_date',
             'tel_no',
             'prof_pic',
             'brief_description',
