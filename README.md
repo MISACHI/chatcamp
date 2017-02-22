@@ -1,1 +1,1 @@
-Chatcamp is a simple, light and easy to use chat application
+Chatcamp is a simple and easy to use social platform
