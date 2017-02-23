@@ -26,7 +26,6 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 # SECURITY WARNING: don't run with debug turned on in production!
 
 # ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
-ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -80,28 +79,12 @@ WSGI_APPLICATION = 'Trial_project.wsgi.application'
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-if config('DB_HOST'):
-    DATABASES = {
-        'default': {
-            # 'ENGINE': 'django.db.backends.sqlite3',
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-            'NAME': config('DB_NAME'),
-            'USER': config('DB_USER'),
-            'PASSWORD': config('DB_PASSWORD'),
-            'HOST': config('DB_HOST'),
-            'PORT': config('PORT'),
-        }
-    }
-else:
-    DATABASES['default'] = dj_database_url.config()
-    # DATABASES = {
-    #     'default': {
-    #         dj_database_url.config(
-    #             default=config('DATABASE_URL'),
-    #         )
-    #     }
-    # }
+DATABASES = {
+    'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+    )
+}
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Password validation
@@ -135,6 +118,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+ALLOWED_HOSTS = ['*']
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
