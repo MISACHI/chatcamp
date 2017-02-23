@@ -89,7 +89,7 @@ if config('DB_HOST'):
             'USER': config('DB_USER'),
             'PASSWORD': config('DB_PASSWORD'),
             'HOST': config('DB_HOST'),
-            'PORT': '',
+            'PORT': config('PORT'),
         }
     }
 else:
@@ -100,6 +100,7 @@ else:
             )
         }
     }
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
