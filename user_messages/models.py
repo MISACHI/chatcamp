@@ -10,3 +10,6 @@ class UserMessages(models.Model):
     user = models.ForeignKey(User)
     user_messages = models.CharField(max_length=500)
     user_messages_time = models.TimeField()
+
+    def __str__(self):
+    	return self.user + self.user_messages + self.user_messages_time
