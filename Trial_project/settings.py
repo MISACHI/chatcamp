@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 from __future__ import unicode_literals
 import os
+from decouple import config, Csv
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -24,7 +25,7 @@ BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 # Application definition
 
@@ -77,12 +78,28 @@ WSGI_APPLICATION = 'Trial_project.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-DATABASES = {
-    'default': dj_database_url.config(
-            default = config('DATABASE_URL')
-        )
-}
 
+if config('DB_HOST'):
+    DATABASES = {
+        'default': {
+            # 'ENGINE': 'django.db.backends.sqlite3',
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+            'NAME': config('DB_NAME'),
+            'USER': config('DB_USER'),
+            'PASSWORD': config('DB_PASSWORD'),
+            'HOST': config('DB_HOST'),
+            'PORT': '',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            dj_database_url.config(
+                default=config('DATABASE_URL'),
+            )
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -150,7 +167,7 @@ LOGIN_REDIRECT_URL = 'feeds'
 # except IOError:
 #     pass
 
-try:
-    from Trial_project.local_settings import *
-except ImportError:
-    pass
+# try:
+#     from Trial_project.local_settings import *
+# except ImportError:
+#     pass
