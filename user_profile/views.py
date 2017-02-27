@@ -6,7 +6,7 @@ from user_profile.forms import ProfileForm
 @login_required(login_url='login')
 def profile(request):
     if request.method == 'POST':
-        profile_info = ProfileForm(request.POST)
+        profile_info = ProfileForm(request.POST or None, request.FILES or None)
         if profile_info.is_valid():
             profile_info.save(commit=True)
         else:

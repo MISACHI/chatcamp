@@ -5,7 +5,7 @@ from django.utils.encoding import python_2_unicode_compatible
 
 
 def upload_location(obj, filename):
-    return u"{0:s}/{1:s}".format(obj.id, filename)
+    return "{0}/{1}".format(obj.profile_id, filename)
 
 
 @python_2_unicode_compatible
@@ -27,4 +27,4 @@ class Profile(models.Model):
     brief_description = models.CharField(max_length=500)
 
     def __str__(self):
-        return self.date_of_birth + '\n' + self.contacts
+        return str(self.date_of_birth) + '\n' + self.contacts

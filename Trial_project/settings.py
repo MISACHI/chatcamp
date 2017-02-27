@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'Trial_project.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 SECRET_KEY = config('SECRET_KEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-
+# if not config("DB_HOST"):
 DATABASES = {
     'default': dj_database_url.config(
         default=config('DATABASE_URL')
@@ -137,13 +137,10 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 
+MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'Trial_project', 'media')
 
 LOGIN_REDIRECT_URL = 'feeds'
-
-
-# def execfile(param):
-#     return param
 
 
 # try:
@@ -153,7 +150,7 @@ LOGIN_REDIRECT_URL = 'feeds'
 # except IOError:
 #     pass
 
-# try:
-#     from Trial_project.local_settings import *
-# except ImportError:
-#     pass
+try:
+    from Trial_project.local_settings import *
+except ImportError:
+    pass

@@ -21,7 +21,7 @@ def register(request):
             )
             user = authenticate(username=username, password=password)
             login(request, user)
-            _success_msg = '{0} was successfully added'.format(user.username)
+            _success_msg = 'User {0} added'.format(user.username)
             feed = Feed(user=user, posts=_success_msg)
             feed.save()
             return redirect('/feeds/')

@@ -10,4 +10,4 @@ class Registration(models.Model):
     user = models.OneToOneField(User)
 
     def __str__(self):
-        return self.user.first_name + '\t' + self.user.last_name
+        return str(self.app_user_id) + '\t' + self.user.first_name + '\t' + self.user.last_name
