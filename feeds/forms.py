@@ -12,10 +12,6 @@ class FeedsForm(forms.ModelForm):
         }),
     )
 
-    # def clean(self):
-    #     posts = self.cleaned_data.get('posts')
-    #     return posts
-
     class Meta:
         model = Feed
         fields = ['posts']
