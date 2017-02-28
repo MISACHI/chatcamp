@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load staticfiles %}
+
+{% block title %}{{ current_user.username }} Messages{% endblock %}
+
+{% block nav_brand %}
+
+<a href="{% url 'trial_feeds' %}" class="navbar-brand">
+    <img class="brand" src="{% static 'img/finance101.png' %}">
+</a>
+
+{% endblock %}
+
+{% block nav %}
+
+<div class="row navbar-right col-sm-4">
+    <ul class="navbar-nav nav">
+        <li><a href="{% url 'trial_feeds' %}">Home</a></li>
+        <li><a href="{% url 'trial_profile' %}">Profile</a></li>
+        <li class="active"><a href="{% url 'trial_msgform' %}">Message</a></li>
+        <li><a href="#">Notifications</a></li>
+        <li><a href="{% url 'trial_feeds' %}">Feeds</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+    </ul>
+</div>
+
+{% endblock %}
+
+{% block body %}
+
+<div class="container margin-bottom-nav">
+    <div class="row">
+        <form method="POST" action="" class="form-horizontal" role="form" id="message-form">
+            {% csrf_token %}
+            {{ messages.non_field_errors }}
+            {% for message in messages.visible_fields %}
+            <div class="form-group">
+                <label for={{ message.id_for_label }} class="control-label col-sm-4">{{ message.label }}</label>
+                <div class="col-sm-4">
+                    {{ message }}
+                </div>
+            </div>
+            {% endfor %}
+            <div class="col-sm-offset-4 col-sm-2">
+                <button type="submit" class="btn btn-primary btn-block">Send message</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block javascript %}
+
+<script >
+$(document).ready(function(){
+   var window_width = $(window).width();
+    if (window_width <= 1543) {
+        $('#navbar-container .navbar-right').removeClass('col-sm-4');
+        $('#navbar-container .navbar-right').addClass('col-sm-8');
+    }
+    if (window_width <= 882){
+        $('#navbar-container .navbar-right').removeClass('col-sm-8');
+        $('#navbar-container .navbar-right').addClass('col-sm-11');
+	}
+	if (window_width <= 768){
+        $('#msg-responsive-left').removeClass('testimonial-section');
+        $('#msg-responsive-right').removeClass('testimonial-section');
+
+        $('.msg-responsive-left').addClass('responsive-msg-left');
+        $('.msg-responsive-right').addClass('responsive-msg-right');
+	}
+
+
+
+});
+
+</script>
+
+{% endblock %}

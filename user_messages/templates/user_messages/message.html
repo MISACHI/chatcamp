@@ -2,7 +2,7 @@
 
 {% load staticfiles %}
 
-{% block title %}Messages{% endblock %}
+{% block title %}{{ current_user.username }} Inbox{% endblock %}
 
 {% block nav_brand %}
 
@@ -18,7 +18,7 @@
     <ul class="navbar-nav nav">
         <li><a href="{% url 'trial_feeds' %}">Home</a></li>
         <li><a href="{% url 'trial_profile' %}">Profile</a></li>
-        <li class="active"><a href="{% url 'trial_messages' %}">Messages</a></li>
+        <li class="active"><a href="{% url 'trial_messages' %}">Inbox</a></li>
         <li><a href="#">Notifications</a></li>
         <li><a href="{% url 'trial_feeds' %}">Feeds</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
@@ -30,16 +30,18 @@
 {% block body %}
 
 <div class="container margin-bottom-nav">
+    {% if msg_data or msg_from_user %}
+    {% for msg in msg_data %}
 	<div class="row">
 		<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 msg-responsive-right">
             <div id="tb-testimonial" class="testimonial testimonial-default">
                 <div class="testimonial-section">
-                    Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.
+                    {{ msg.user_messages }}
             	</div>
                 <div class="testimonial-desc">
                     <img src="{% static 'img/finance101.png' %}" alt="" />
                     <div class="testimonial-writer">
-                    	<div class="testimonial-writer-name">Zahed Kamal</div>
+                    	<div class="testimonial-writer-name">From: {{ current_user.username }}</div>
                     	<div class="testimonial-writer-designation">Front End Developer</div>
                     	<a href="#" class="testimonial-writer-company">Touch Base Inc</a>
                     </div>
@@ -47,78 +49,29 @@
             </div>
 		</div>
 	</div>
+    {% endfor %}
+
+    {% for msg in msg_from_user %}
     <div class="row">
 		<div class="col-md-4 col-md-offset-6 col-sm-4 col-sm-offset-6 msg-responsive msg-responsive-left">
             <div id="tb-testimonial" class="testimonial testimonial-info">
                 <div class="testimonial-section">
-                    Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.
+                    {{ msg.user_messages }}
             	</div>
                 <div class="testimonial-desc">
                     <img src="{% static 'img/washington.jpg' %}" alt="" />
-                    <div class="testimonial-writer">
-                    	<div class="testimonial-writer-name">Zahed Kamal</div>
-                    	<div class="testimonial-writer-designation">Front End Developer</div>
-                    	<a href="#" class="testimonial-writer-company">Touch Base Inc</a>
-                    </div>
                 </div>
             </div>
 		</div>
 	</div>
-    <div class="row">
-		<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 msg-responsive msg-responsive-right">
-            <div id="tb-testimonial" class="testimonial testimonial-default">
-                <div class="testimonial-section">
-                    Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.
-            	</div>
-                <div class="testimonial-desc">
-                    <img src="{% static 'img/finance101.png' %}" alt="" />
-                    <div class="testimonial-writer">
-                    	<div class="testimonial-writer-name">Zahed Kamal</div>
-                    	<div class="testimonial-writer-designation">Front End Developer</div>
-                    	<a href="#" class="testimonial-writer-company">Touch Base Inc</a>
-                    </div>
-                </div>
-            </div>
-		</div>
-	</div>
-    <div class="row">
-		<div class="col-md-4 col-md-offset-6 col-sm-4 col-sm-offset-6 msg-responsive msg-responsive-left">
-            <div id="tb-testimonial" class="testimonial testimonial-info">
-                <div class="testimonial-section">
-                    Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.
-            	</div>
-                <div class="testimonial-desc">
-                    <img src="{% static 'img/washington.jpg' %}" alt="" />
-                    <div class="testimonial-writer">
-                    	<div class="testimonial-writer-name">Zahed Kamal</div>
-                    	<div class="testimonial-writer-designation">Front End Developer</div>
-                    	<a href="#" class="testimonial-writer-company">Touch Base Inc</a>
-                    </div>
-                </div>
-            </div>
-		</div>
-	</div>
-    <div class="row">
-		<div class="col-md-4 col-md-offset-2 col-sm-4 col-sm-offset-2 msg-responsive msg-responsive-right">
-            <div id="tb-testimonial" class="testimonial testimonial-default">
-                <div class="testimonial-section">
-                    Denim you probably haven't heard of. Lorem ipsum dolor met consectetur adipisicing sit amet, consectetur adipisicing elit, of them jean shorts sed magna aliqua. Lorem ipsum dolor met.
-            	</div>
-                <div class="testimonial-desc">
-                    <img src="{% static 'img/finance101.png' %}" alt="" />
-                    <div class="testimonial-writer">
-                    	<div class="testimonial-writer-name">Zahed Kamal</div>
-                    	<div class="testimonial-writer-designation">Front End Developer</div>
-                    	<a href="#" class="testimonial-writer-company">Touch Base Inc</a>
-                    </div>
-                </div>
-            </div>
-		</div>
-	</div>
+    {% endfor %}
+    {% else %}
+    <div class="col-sm-offset-3">
+        <span class="h2">Messages is empty</span>
+        <p>Write a new message...</p><br>
+    </div>
+    {% endif %}
 </div>
-
-    <br/>
-
 {% endblock %}
 
 {% block javascript %}

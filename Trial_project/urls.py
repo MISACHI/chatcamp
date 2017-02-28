@@ -41,7 +41,7 @@ urlpatterns = [
     url(r'^register/', trial_auth_views.register, name='trial_signup'),
     url(r'^profile/', trial_profile_views.profile, name='trial_profile'),
     url(r'^feeds/', include('feeds.urls')),
-    url(r'^messages/', trial_messages.user_messages, name='trial_messages'),
+    url(r'^messages/', include("user_messages.urls")),
     url(r'^admin/', admin.site.urls),
 ]
 

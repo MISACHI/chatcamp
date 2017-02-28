@@ -3,12 +3,12 @@ from user_messages.models import UserMessages
 
 
 class MessagesForm(forms.ModelForm):
-    username = forms.CharField(
-        label="Mate",
+    message_to = forms.CharField(
+        label="Message to",
         widget=forms.TimeInput(attrs={
             "class": "form-control",
             "placeholder": "Enter user to send Message to",
-            "name": "user"
+            "name": "msg_to"
         })
     )
     message = forms.CharField(
@@ -22,4 +22,4 @@ class MessagesForm(forms.ModelForm):
 
     class Meta:
         model = UserMessages
-        fields = ["username", "message"]
+        fields = ["message_to", "message"]
