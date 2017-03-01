@@ -34,3 +34,6 @@ class UserMessages(models.Model):
             user_messages=message,
 
         )
+
+    class Meta:
+        ordering = ["-user_messages_timestamp"]

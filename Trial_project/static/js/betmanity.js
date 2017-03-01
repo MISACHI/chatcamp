@@ -1,6 +1,5 @@
 jQuery(document).ready(function(){
-		$("#user-data").popover();
-		$("#pwd-data").popover();
+		$("notifications").popover();
 		$(".auto_animate").fadeIn(1000);
 
 		$(".nav-tabs a:first").tab("show");

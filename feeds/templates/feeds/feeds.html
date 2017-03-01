@@ -17,7 +17,9 @@
         <li><a href="{% url 'trial_feeds' %}">Home</a></li>
         <li><a href="{% url 'trial_profile' %}">Profile</a></li>
         <li><a href="{% url 'trial_messages' %}">Messages</a></li>
-        <li><a href="#">Notifications</a></li>
+        <li>
+            <a href="#" data-toggle="popover" data-placement="bottom" data-trigger="click" title="Notifications"  data-content="Your Notifications here" id="notifications">Notifications</a>
+        </li>
         <li class="active"><a href="{% url 'trial_feeds' %}">Feeds</a></li>
         <li><a href="{% url 'logout' %}">Logout</a></li>
     </ul>
@@ -72,14 +74,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!--<div class="row">-->
-                            <!--<div class="col-sm-4 col-sm-offset-2">-->
-
-                            <!--</div>-->
-                            <!--<div class="col-sm-offset ">-->
-                                <!--<a href="#"><span class="glyphicon glyphicon-inbox"></span> Message</a>-->
-                            <!--</div>-->
-                        <!--</div>&lt;!&ndash; row &ndash;&gt;-->
                         <hr>
                         {% endfor %}
                     </div>
@@ -90,24 +84,4 @@
 </div>
 {% endif %}
 
-{% endblock %}
-
-{% block javascript %}
-<script >
-    var window_width = $(window).width();
-    if (window_width <= 1543) {
-        $('#navbar-container .navbar-right').removeClass('col-sm-4');
-        $('#navbar-container .navbar-right').addClass('col-sm-8');
-    }
-    if (window_width <= 882){
-        $('#navbar-container .navbar-right').removeClass('col-sm-8');
-        $('#navbar-container .navbar-right').addClass('col-sm-11');
-	}
-	if (window_width <= 1200) {
-	    $('#panel-wide .make-panel-wide').removeClass('col-sm-6');
-	    $('#panel-wide .make-panel-wide').removeClass('col-sm-offset-3');
-        $('#panel-wide .make-panel-wide').addClass('col-sm-10');
-        $('#panel-wide .make-panel-wide').addClass('col-sm-offset-1');
-	}
-</script>
 {% endblock %}
