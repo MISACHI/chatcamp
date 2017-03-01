@@ -35,6 +35,7 @@ def user_messages(request):
     current_user = request.user
     msg_from_user = UserMessages.get_sent_messages(current_user)
     msg_data = UserMessages.get_received_messages(current_user)
+
     return render(request, "user_messages/message.html", {
         "msg_data": msg_data,
         "current_user": current_user,

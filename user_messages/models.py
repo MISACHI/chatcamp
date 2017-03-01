@@ -11,6 +11,7 @@ class UserMessages(models.Model):
     user_from = models.ForeignKey(User, related_name='+')
     user_messages = models.CharField(max_length=500)
     user_messages_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
+    is_read = models.BooleanField(default=False)
 
     def __str__(self):
         return str(self.user_messages_timestamp) + "\t" + self.user_messages
@@ -30,5 +31,6 @@ class UserMessages(models.Model):
         UserMessages.objects.create(
             user_from=from_user,
             user_to=to_user,
-            user_messages=message
+            user_messages=message,
+
         )

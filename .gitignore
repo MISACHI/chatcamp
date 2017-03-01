@@ -5,6 +5,9 @@ __pycache__/
 #pycharm ide files
 .idea/
 
+#log file
+logs
+
 # project files and directories
 /Trial_project/local_settings.py
 /Trial_project/static/
