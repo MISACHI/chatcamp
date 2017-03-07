@@ -30,25 +30,6 @@ def user_messages_form(request):
     })
 
 
-# @require_http_methods(["GET", "POST"])
-# @login_required(login_url="login")
-# def user_messages(request):
-#     current_user = request.user
-#     user_to = request.POST.get("message_to")
-#     # user_to_obj = User.objects.get(username=user_to)
-#     user_message = request.POST.get("message")
-#
-#     UserMessages.create_message(current_user, user_to, user_message)
-#     message_id = UserMessages.objects.filter(user_messages=user_message).values("user_messages_id")
-#     msg_to_user = UserMessages.get_sent_messages(message_id)
-#     msg_from_user = UserMessages.get_received_messages(current_user)
-#
-#     return render(request, "user_messages/message.html", {
-#         "msg_from_user": msg_from_user,
-#         "current_user": current_user,
-#         "msg_to_user": msg_to_user,
-#     })
-
 
 # displays user messages
 @login_required(login_url="login")
