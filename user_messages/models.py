@@ -21,7 +21,6 @@ class UserMessages(models.Model):
     user_messages_id = models.AutoField(primary_key=True)
     user_to = models.ForeignKey(User, related_name="+")
     user_from = models.ForeignKey(User, related_name="+")
-    # conversations = models.ForeignKey(User, related_name="+")
     user_messages = models.CharField(max_length=500)
     user_messages_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     is_read = models.BooleanField(default=False)
