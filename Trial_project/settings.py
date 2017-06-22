@@ -81,12 +81,12 @@ WSGI_APPLICATION = 'Trial_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-SECRET_KEY = config('SECRET_KEY', default='sEkreT_kEY')
+SECRET_KEY = config('SECRET_KEY', default='thE_sEkreT_kEY')
 DEBUG = config('DEBUG', default=False, cast=bool)
-# if not config("DB_HOST"):
+
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL')
+        default=config('DATABASE_URL', default='sqlite:////tmp/db.sqlite3')
     )
 }
 
