@@ -6,4 +6,4 @@ notifications:
   slack:
     on_success: change
     on_failure: change
-script: py.test
+script: pytest
