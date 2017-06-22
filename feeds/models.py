@@ -16,7 +16,7 @@ class Feed(models.Model):
     time_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
 
     def __str__(self):
-        return str(self.feeds_id) + '\t' + str(self.time_updated) + '\t' + str(self.timestamp) + '\n' + self.posts
+        return str(self.feeds_id) + '\t' + str(self.time_updated) + '\t' + str(self.timestamp) + '\n' + str(self.posts)
 
     @staticmethod
     def get_user_feeds(feed_data=None):  # function is a static method gets user feeds and can be called on the class

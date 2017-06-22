@@ -57,7 +57,7 @@ class ProfileForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control',
-                'placeholder' : 'Mobile Number',
+                'placeholder': 'Mobile Number',
                 'name': 'tel_no',
             }
         )

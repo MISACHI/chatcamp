@@ -12,8 +12,8 @@ def feeds(request):
     user = request.user
     feed_data = Feed.get_user_feeds()
     return render(request, 'feeds/feeds.html', {
-        'user' : user,
-        'feeds' : feed_data,
+        'user': user,
+        'feeds': feed_data,
     })
 
 
@@ -32,5 +32,5 @@ def post_feeds(request):
         feeds_form = FeedsForm()
     return render(request, 'feeds/post_feeds.html', {
         'forms': feeds_form,
-        'user' : user,
+        'user': user,
     })

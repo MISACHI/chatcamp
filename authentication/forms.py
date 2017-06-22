@@ -12,7 +12,8 @@ class RegistrationForm(forms.ModelForm):
         }),
         max_length=30,
         required=True,
-        help_text='Usernames may contain <strong>alphanumeric</strong>, <strong>_</strong> and <strong>.</strong> characters'
+        help_text='Username may contain <strong>alphanumeric</strong>, <strong>_</strong> and '
+                  '<strong>.</strong> characters'
     )
     email = forms.EmailField(
         label='Email',

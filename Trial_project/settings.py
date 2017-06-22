@@ -147,7 +147,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'Trial_project', 'media')
 
 LOGIN_REDIRECT_URL = 'feeds'
 
-
 # try:
 #     exec(os.path.join(
 #         os.path.dirname(__file__), "local_settings.py"

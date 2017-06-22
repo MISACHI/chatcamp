@@ -30,7 +30,6 @@ def user_messages_form(request):
     })
 
 
-
 # displays user messages
 @login_required(login_url="login")
 def user_messages(request):
