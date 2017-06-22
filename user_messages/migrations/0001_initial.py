@@ -23,8 +23,10 @@ class Migration(migrations.Migration):
                 ('user_messages', models.CharField(max_length=500)),
                 ('user_messages_timestamp', models.DateTimeField(auto_now_add=True)),
                 ('is_read', models.BooleanField(default=False)),
-                ('user_from', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to=settings.AUTH_USER_MODEL)),
-                ('user_to', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+', to=settings.AUTH_USER_MODEL)),
+                ('user_from', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+',
+                                                to=settings.AUTH_USER_MODEL)),
+                ('user_to', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='+',
+                                              to=settings.AUTH_USER_MODEL)),
             ],
             options={
                 'ordering': ['-user_messages_timestamp'],

@@ -9,7 +9,6 @@ import user_profile.models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
@@ -21,7 +20,9 @@ class Migration(migrations.Migration):
             name='Profile',
             fields=[
                 ('profile_id', models.AutoField(primary_key=True, serialize=False)),
-                ('profile_pic', models.ImageField(blank=True, height_field='height_field', null=True, upload_to=user_profile.models.upload_location, width_field='width_field')),
+                ('profile_pic', models.ImageField(blank=True, height_field='height_field',
+                                                  null=True, upload_to=user_profile.models.upload_location,
+                                                  width_field='width_field')),
                 ('height_field', models.IntegerField(default=0)),
                 ('width_field', models.IntegerField(default=0)),
                 ('contacts', models.TextField(max_length=10)),
@@ -29,7 +30,8 @@ class Migration(migrations.Migration):
                 ('skills', models.CharField(max_length=500)),
                 ('profession', models.TextField(max_length=100)),
                 ('brief_description', models.CharField(max_length=500)),
-                ('app_user_id', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('app_user_id', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE,
+                                                     to=settings.AUTH_USER_MODEL)),
             ],
         ),
     ]

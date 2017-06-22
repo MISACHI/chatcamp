@@ -14,5 +14,3 @@ from django.contrib import admin
 # admin.site.register(Feed)
 # admin.site.register(Friend)
 # admin.site.register(Comment)
-
-

@@ -24,7 +24,8 @@ class Migration(migrations.Migration):
                 ('posts', models.CharField(blank=True, max_length=200)),
                 ('timestamp', models.DateTimeField(auto_now_add=True)),
                 ('time_updated', models.DateTimeField(auto_now=True)),
-                ('profile', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='user_profile.Profile')),
+                ('profile', models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE,
+                                              to='user_profile.Profile')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
             options={
