@@ -1,4 +1,4 @@
-jQuery(document).ready(function(){
+$(document).ready(function(){
 		$(".auto_animate").fadeIn(1000);
 
 		$(".nav-tabs a:first").tab("show");
