@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block nav %}
-<div class="row navbar-right col-sm-4">
+<div class="row navbar-right col-sm-5">
     <ul class="navbar-nav nav">
         <li><a href="{% url 'trial_feeds' %}">Home</a></li>
         <li><a href="{% url 'trial_profile' %}">Profile</a></li>
@@ -28,6 +28,7 @@
 
 {% block body %}
 
+
 {% if user.is_authenticated %}
 <div class="margin-bottom-nav">
     <div class="container" id="maintain-row">
@@ -35,7 +36,18 @@
             <!---->
         <!--</div>-->
         <div id="panel-wide">
-            <div class="make-panel-wide col-sm-6 col-sm-offset-3">
+            <div class="make-panel-wide col-sm-5 col-sm-offset-3">
+                <form action="{% url 'trial_post_feeds' %}" method="POST" role="form" id="feeds-form" class="form-horizontal">
+                    {% csrf_token %}
+                    {{ forms.non_field_errors }}
+                    <div class="form-group">
+                        {{ forms.posts }}
+                    </div>
+                    <div class="pull-right">
+                        <button type="submit" class="btn btn-primary btn-small">Post</button>
+                    </div>
+                </form>
+                <br><br><br>
                 <div class="panel panel-default">
                     <p class="panel-body" id="feed-user-image">
                         {% for feed in feeds %}
@@ -53,7 +65,7 @@
                                     <p class="">
                                         {{ feed.posts }}
                                     </p>
-                                    <span class=""><b> {{ feed.timestamp|timesince }}</b></span>
+                                    <span class=""><b> {{ feed.created|timesince }}</b></span>
                                     <div class="accordion" id="schedule">
                                         <!-- Comment ------------------------>
                                         <div class="accordion-group">
@@ -66,8 +78,26 @@
 
                                         <div id="{{ feed.feeds_id }}" class="accordion-body collapse">
                                             <div class="accordion-inner">
-                                                <p>Some text here. hehe, just copied it</p>
-                                                <p>{{ feed.posts }}</p>
+                                                <form action="{% url 'trial_feeds' %}" method="POST" role="form" id="comments-form" class="form-horizontal">
+                                                    {% csrf_token %}
+                                                    {{ comments_form.non_field_errors }}
+                                                    <input type="hidden" name="feed_pk" value="{{ feed.pk }}">
+                                                    <div class="form-group">
+                                                        {{ comments_form.comment }}
+                                                    </div>
+                                                    <div class="pull-right">
+                                                        <button type="submit" class="btn btn-primary btn-small">Comment</button>
+                                                    </div>
+                                                </form>
+                                                {% for comment in comments %}
+                                                <span class=""><b><a href="#"> {{ comment.feed }}</a></b></span>
+                                                <p class="">
+                                                    {{ comment.comment }}
+                                                </p>
+                                                <span class=""><b> {{ comment.created|timesince }}</b></span>
+                                                {% endfor %}
+                                                <!--<p>Some text here. hehe, just copied it</p>-->
+                                                <!--<p>{{ feed.posts }}</p>-->
                                             </div><!-- accordion-inner -->
                                         </div><!-- comment -->
                                     </div><!-- accordion -->

@@ -86,7 +86,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL', default='sqlite:////tmp/db.sqlite3')
+        default=config('DATABASE_URL')
     )
 }
 

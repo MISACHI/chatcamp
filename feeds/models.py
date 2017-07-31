@@ -1,22 +1,25 @@
 from __future__ import unicode_literals
-from django.db import models
+import uuid
 from datetime import date
+
+from django.db import models
 from django.contrib.auth.models import User
-from user_profile.models import Profile
 from django.utils.encoding import python_2_unicode_compatible
+
+from user_profile.models import Profile
 
 
 @python_2_unicode_compatible
 class Feed(models.Model):
-    feeds_id = models.AutoField(primary_key=True)
+    feeds_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     user = models.ForeignKey(User)
     profile = models.ForeignKey(Profile, null=True)
-    posts = models.CharField(max_length=200, blank=True)
-    timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
-    time_updated = models.DateTimeField(auto_now=True, auto_now_add=False)
+    posts = models.CharField(max_length=200)
+    created = models.DateTimeField(auto_now_add=True)
+    time_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.feeds_id) + '\t' + str(self.time_updated) + '\t' + str(self.timestamp) + '\n' + str(self.posts)
+        return '{}'.format(self.posts)
 
     @staticmethod
     def get_user_feeds(feed_data=None):  # function is a static method gets user feeds and can be called on the class
@@ -26,5 +29,35 @@ class Feed(models.Model):
             feeds = Feed.objects.filter(timestamp__lte=date.today())
         return feeds
 
+    @staticmethod
+    def get_feeds():
+        feeds = Feed.objects.all()
+        return feeds
+
     class Meta:
-        ordering = ["-timestamp", "-time_updated"]
+        ordering = ["-created", "-time_updated"]
+
+
+@python_2_unicode_compatible
+class Comments(models.Model):
+    comment_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    comment = models.CharField(max_length=200)
+    feed = models.ForeignKey(Feed)
+    created = models.DateTimeField(auto_now_add=True)
+    time_updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return '{0} {1}'.format(self.feed, self.comment)
+
+    @staticmethod
+    def create_new_comment(feed_id, comment):
+        # feed = Feed.objects.get(feeds_id=feed_id)
+        Comments.objects.create(feed_id=feed_id, comment=comment)
+
+    @staticmethod
+    def get_comments(feed_id):
+        comments = Comments.objects.filter(feed_id=feed_id)
+        return comments
+
+    class Meta:
+        ordering = ["-created", "-time_updated"]
