@@ -24,9 +24,9 @@ class Feed(models.Model):
     @staticmethod
     def get_user_feeds(feed_data=None):  # function is a static method gets user feeds and can be called on the class
         if feed_data is not None:
-            feeds = Feed.objects.filter(feeds_id__lte=feed_data)
+            feeds = Feed.objects.filter(created__lte=feed_data)
         else:
-            feeds = Feed.objects.filter(timestamp__lte=date.today())
+            feeds = Feed.objects.filter(created__lte=date.today())
         return feeds
 
     @staticmethod
