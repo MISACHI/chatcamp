@@ -81,7 +81,7 @@ WSGI_APPLICATION = 'Trial_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
-SECRET_KEY = config('SECRET_KEY', default='thE_sEkreT_kEY')
+SECRET_KEY = config('SECRET_KEY', default=config('SECRET_KEY'))
 DEBUG = config('DEBUG', default=False, cast=bool)
 
 DATABASES = {
@@ -154,7 +154,7 @@ LOGIN_REDIRECT_URL = 'feeds'
 # except IOError:
 #     pass
 
-try:
-    from Trial_project.local_settings import *
-except ImportError:
-    pass
+# try:
+#     from Trial_project.local_settings import *
+# except ImportError:
+#     pass
