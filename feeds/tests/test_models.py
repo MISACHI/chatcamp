@@ -3,6 +3,7 @@ from mixer.backend.django import mixer
 
 from uuid import UUID
 from django.utils import timezone
+from datetime import datetime
 
 pytestmark = pytest.mark.django_db
 
@@ -20,7 +21,7 @@ class TestFeed:
 
     def test_user_feeds(self, db_data):
         feed_obj = db_data
-        assert isinstance(feed_obj.get_user_feeds(timezone.now())[0].feeds_id, UUID) is True, \
+        assert isinstance(feed_obj.get_user_feeds(timezone.make_aware(datetime.now(), timezone.utc))[0].feeds_id, UUID) is True, \
             'Should check method return valid data if parameter is passed'
         # assert feed_obj.get_user_feeds().exists() is False, \
         #     'Should check method returns valid data if parameter is not passed'
