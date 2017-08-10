@@ -11,6 +11,9 @@ from user_profile.models import Profile
 
 @python_2_unicode_compatible
 class Feed(models.Model):
+    """
+    Keeps all feeds and related data
+    """
     feeds_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
     user = models.ForeignKey(User)
     profile = models.ForeignKey(Profile, null=True)
@@ -22,16 +25,21 @@ class Feed(models.Model):
         return '{}'.format(self.posts)
 
     @staticmethod
-    def get_user_feeds(feed_data=None):  # function is a static method gets user feeds and can be called on the class
-        if feed_data is not None:
-            feeds = Feed.objects.filter(created__lte=feed_data)
+    def get_user_feeds(feed_date=None):
+        """
+        
+        :param feed_date: 
+        :return: return a queryset with all feeds from feed_date if provided or all feeds
+        """
+        if feed_date is not None:
+            feeds = Feed.objects.filter(created__lte=feed_date)
         else:
             feeds = Feed.objects.all()
         return feeds
 
     @staticmethod
-    def get_feeds():
-        feeds = Feed.objects.all()
+    def get_feeds(user):
+        feeds = Feed.objects.filter(user=user)
         return feeds
 
     class Meta:

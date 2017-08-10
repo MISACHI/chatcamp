@@ -22,5 +22,5 @@ class TestFeed:
         feed_obj = db_data
         assert isinstance(feed_obj.get_user_feeds(timezone.now())[0].feeds_id, UUID) is True, \
             'Should check method return valid data if parameter is passed'
-        # assert feed_obj.get_user_feeds().exists() is False, \
-        #     'Should check method returns valid data if parameter is not passed'
+        assert feed_obj.get_user_feeds().exists() is False, \
+            'Should check method returns valid data if parameter is not passed'

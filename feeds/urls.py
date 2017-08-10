@@ -1,8 +1,10 @@
 from django.conf.urls import url
-from feeds.views import post_feeds, feeds
+from feeds import views
 
 
 urlpatterns = [
-    url(r'^$', feeds, name='trial_feeds'),
-    url(r'^post/$', post_feeds, name='trial_post_feeds'),
+    url(r'^$', views.feeds, name='trial_feeds'),
+    url(r'^post/$', views.post_feeds, name='trial_post_feeds'),
+    url(r'^save_comments/$', views.comment, name='save_new_comments'),
+    # url(r'^retrieve_comments/$', views.get_comments, name='retrieve_comments'),
 ]

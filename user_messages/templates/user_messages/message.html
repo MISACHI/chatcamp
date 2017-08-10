@@ -46,7 +46,7 @@
                             <div class="testimonial-writer">
                                 <div class="testimonial-writer-name">From: <a href="#">{{ msg_to.user_from }}</a></div>
                                 <div class="testimonial-writer-designation">Front End Developer</div>
-                                <span class="testimonial-writer-company">{{ msg_to.user_messages_timestamp|timesince }}</span>
+                                <span class="testimonial-writer-company">{{ msg_to.created|timesince }}</span>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         </div>
                         <div class="testimonial-desc">
                             <div class="testimonial-writer">
-                                <span class="testimonial-writer-company">{{ msg_from.user_messages_timestamp|timesince }}</span>
+                                <span class="testimonial-writer-company">{{ msg_from.created|timesince }}</span>
                             </div>
                         </div>
                     </div>

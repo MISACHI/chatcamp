@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 import uuid
 
 from django.db import models
+from django.db.models import Q
 from django.contrib.auth.models import User
 from django.utils.encoding import python_2_unicode_compatible
 
@@ -20,31 +21,40 @@ class UserMessagesManager(models.Manager):
 @python_2_unicode_compatible
 class UserMessages(models.Model):
     objects = UserMessagesManager()
-    user_messages_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    user_to = models.ForeignKey(User, related_name="+")
-    user_from = models.ForeignKey(User, related_name="+")
+    messages_id = models.UUIDField(primary_key=True, default=uuid.uuid4)
+    user_to = models.ForeignKey(User, related_name='msg_to_user')
+    user_from = models.ForeignKey(User, related_name='msg_from_user')
     user_messages = models.CharField(max_length=500)
-    user_messages_timestamp = models.DateTimeField(auto_now=False, auto_now_add=True)
     is_read = models.BooleanField(default=False)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.user_messages_timestamp) + "\t" + self.user_messages + "\t" + str(self.is_read)
+        return '{0} {1} {2}'.format(str(self.created), self.user_messages, str(self.is_read))
 
     @staticmethod
     def get_sent_messages(user):
-        message_data = UserMessages.objects.filter(user_to=user).values_list("user_messages_id", flat=True)
+        message_data = UserMessages.objects.filter(user_to=user).values_list('messages_id', flat=True)
         msgs = UserMessages.objects.read_message(message_data)
         return msgs
 
     @staticmethod
     def get_unread_messages_(user):
-        unread_messages = UserMessages.objects.filter(user_to=user).filter(is_read=False)
-        return unread_messages
+        unread_messages = UserMessages.objects.filter(
+            Q(user_to=user) &
+            Q(is_read=False)
+        ).values_list('messages_id', flat=True)
+        msgs = UserMessages.objects.read_message(unread_messages)
+        return msgs
 
     @staticmethod
     def get_received_messages(user):
         message_data = UserMessages.objects.filter(user_from=user)
         return message_data
+
+    @staticmethod
+    def get_conversation(user):
+        conversations = UserMessages.objects.filter(user_to=user)
 
     @staticmethod
     def create_message(from_user, to_user, message):
@@ -55,4 +65,4 @@ class UserMessages(models.Model):
         )
 
     class Meta:
-        ordering = ["-user_messages_timestamp"]
+        ordering = ["-created"]

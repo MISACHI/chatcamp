@@ -1,0 +1,7 @@
+{% for comment in comments %}
+<!--<span class=""><b><a href="#"> {{ comment.feed }}</a></b></span>-->
+<p class="">
+    {{ comment.comment }}
+</p>
+<span class=""><b> {{ comment.created|timesince }}</b></span>
+{% endfor %}

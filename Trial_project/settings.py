@@ -154,7 +154,7 @@ LOGIN_REDIRECT_URL = 'feeds'
 # except IOError:
 #     pass
 
-# try:
-#     from Trial_project.local_settings import *
-# except ImportError:
-#     pass
+try:
+    from Trial_project.local_settings import *
+except ImportError:
+    pass
