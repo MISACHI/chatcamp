@@ -1,9 +1,6 @@
 from django import forms
 from user_messages.models import UserMessages
 
-data = {}
-data.
-
 
 class MessagesForm(forms.ModelForm):
     message_to = forms.CharField(
