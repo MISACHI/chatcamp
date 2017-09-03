@@ -1,2 +1,5 @@
 static/* linguist-vendored
 Trial_project/static/* linguist-vendored
+user_messages/static/* linguist-vendored
+user_profile/static/* linguist-vendored
+feeds/static/* linguist-vendored
